@@ -10,10 +10,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    env:
-      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: false
-      LANG: pt_BR.UTF-8
-      LC_ALL: pt_BR.UTF-8
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

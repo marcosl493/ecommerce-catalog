@@ -6,6 +6,7 @@ using Moq;
 
 namespace Application.UnitTests.UseCases;
 
+[Collection("Culture collection")]
 public class CreateProductHandlerTests
 {
     [Fact]
