@@ -1,0 +1,29 @@
+﻿using Application.UseCases.CreateProduct;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebApi.Endpoints;
+
+public static class ProductsEndpoints
+{
+    public static IEndpointRouteBuilder MapProductEndpoints(this IEndpointRouteBuilder endpoint)
+    {
+        var endpoints = endpoint
+           .MapGroup("api/products")
+           .WithTags("Product")
+           .ProducesProblem(StatusCodes.Status500InternalServerError);
+
+        endpoints.MapPost(string.Empty, async (
+            [FromBody] CreateProductCommand request,
+            [FromServices] ISender sender,
+            CancellationToken cancellationToken
+        ) =>
+        {
+            var result = await sender.Send(request, cancellationToken);
+
+            return result.Serialize();
+        }).Produces<CreateProductResponse>(StatusCodes.Status200OK)
+          .ProducesValidationProblem(StatusCodes.Status400BadRequest);
+        return endpoints;
+    }
+}

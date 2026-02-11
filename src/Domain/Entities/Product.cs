@@ -22,14 +22,12 @@ public sealed class Product
         string name,
         string description,
         decimal price,
-        ProductImage? image,
         ProductCategory category)
     {
         Id = Guid.CreateVersion7();
         Name = name;
         Description = description;
         Price = price;
-        Image = image;
         Category = category;
         Active = true;
 
