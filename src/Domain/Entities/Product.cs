@@ -16,17 +16,21 @@ public sealed class Product
 
     public ProductImage? Image { get; private set; }
 
+    public ProductCategory Category { get; private set; }
+
     public Product(
         string name,
         string description,
         decimal price,
-        ProductImage? image)
+        ProductImage? image,
+        ProductCategory category)
     {
         Id = Guid.CreateVersion7();
         Name = name;
         Description = description;
         Price = price;
         Image = image;
+        Category = category;
         Active = true;
 
         Validate();
@@ -50,6 +54,14 @@ public sealed class Product
         Price = newPrice;
     }
 
+    public void ChangeCategory(ProductCategory category)
+    {
+        if (category == ProductCategory.Undefined)
+            throw new ArgumentException("Product category is required.");
+
+        Category = category;
+    }
+
     public void Deactivate()
     {
         Active = false;
@@ -62,5 +74,8 @@ public sealed class Product
 
         if (Price <= 0)
             throw new ArgumentException("Product price must be greater than zero.");
+
+        if (Category == ProductCategory.Undefined)
+            throw new ArgumentException("Product category is required.");
     }
 }
