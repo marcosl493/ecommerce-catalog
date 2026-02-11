@@ -1,6 +1,4 @@
-# ecommerce-catalog
-
-API de catálogo de produtos (exemplo)
+# API de catálogo de produtos
 
 Descrição
 ---------
