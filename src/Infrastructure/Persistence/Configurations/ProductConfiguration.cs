@@ -19,6 +19,8 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(p => p.Price)
             .IsRequired()
             .HasColumnType("decimal(18,2)");
+        builder.Property(p => p.Active)
+           .IsRequired();
         builder.OwnsOne(p => p.Image, image =>
         {
             image.Property(i => i.Path)
