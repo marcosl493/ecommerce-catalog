@@ -1,5 +1,7 @@
 # API de catálogo de produtos
 
+[![CI - Build and Test](https://github.com/marcosl493/ecommerce-catalog/actions/workflows/ci.yml/badge.svg)](https://github.com/marcosl493/ecommerce-catalog/actions/workflows/ci.yml)
+
 Descrição
 ---------
 Projeto exemplo que implementa um catálogo de produtos com arquitetura em camadas:
