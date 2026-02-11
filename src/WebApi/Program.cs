@@ -1,3 +1,4 @@
+using Infrastructure;
 using WebApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,8 @@ builder.Logging.ClearProviders();
 builder
     .Services
     .AddOpenApi()
-    .AddSerilog();
+    .AddSerilog()
+    .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
