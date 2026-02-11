@@ -3,6 +3,7 @@ using Application.UseCases.CreateProduct;
 using Application.UseCases.DeleteProduct;
 using Application.UseCases.EditProduct;
 using Application.UseCases.GetProduct;
+using Application.UseCases.UploadProductImage;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -69,6 +70,31 @@ public static class ProductsEndpoints
         .Produces(StatusCodes.Status204NoContent)
           .ProducesProblem(StatusCodes.Status404NotFound)
           .ProducesValidationProblem(StatusCodes.Status400BadRequest);
+
+        endpoints.MapPost("/{id:guid}/image", async (
+            [FromRoute] Guid id,
+            [FromForm] IFormFile file,
+            [FromServices] ISender sender,
+            CancellationToken cancellationToken
+        ) =>
+        {
+            if (file is null)
+                return Results.BadRequest();
+
+            using var ms = new MemoryStream();
+            await file.CopyToAsync(ms, cancellationToken);
+            var content = ms.ToArray();
+
+            var command = new UploadProductImageCommand(id, content, file.FileName);
+            var result = await sender.Send(command, cancellationToken);
+            return result.Serialize();
+        })
+        .DisableAntiforgery()
+        .WithDescription("Envia a imagem de um produto.")
+        .Accepts<UploadProductImageDto>("multipart/form-data")
+        .Produces<Product>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .ProducesValidationProblem(StatusCodes.Status400BadRequest);
 
         endpoints.MapGet("", async (
             [FromServices] ISender sender,

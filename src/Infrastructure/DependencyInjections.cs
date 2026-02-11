@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
+using Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,9 @@ public static class DependencyInjections
         services
             .AddLogging()
             .AddRepositories();
+
+        services.AddSingleton<IStorageService, AwsS3StorageService>();
+
         return services;
     }
     private static string BuildConnectionString(this IConfiguration configuration, string name)

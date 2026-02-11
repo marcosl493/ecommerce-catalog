@@ -23,9 +23,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.MapProductEndpoints();
 
 await app.RunAsync();
-
-
