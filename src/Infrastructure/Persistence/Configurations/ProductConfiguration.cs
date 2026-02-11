@@ -26,5 +26,19 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
                 .HasMaxLength(500)
                 .IsRequired(false);
         });
+
+        builder.HasIndex(p => p.Price)
+            .HasDatabaseName("idx_products_active_price")
+            .HasFilter("\"Active\" = true");
+
+        builder.HasIndex(p => p.Category)
+            .HasDatabaseName("idx_products_category");
+
+        builder.HasIndex(p => p.Active)
+            .HasDatabaseName("idx_products_status");
+
+        builder.HasIndex(p => new { p.Category, p.Price })
+            .HasDatabaseName("idx_products_active_category_price")
+            .HasFilter("\"Active\" = true");
     }
 }
