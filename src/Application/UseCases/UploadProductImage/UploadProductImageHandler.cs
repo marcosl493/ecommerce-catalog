@@ -24,13 +24,13 @@ public sealed class UploadProductImageHandler(
             return Result.Fail(new ResourceNotFoundError("Product"));
 
         if (request.Content is null || request.Content.Length == 0)
-            return Result.Fail(new BusinessLogicError("Arquivo inválido ou vazio."));
+            return Result.Fail(new BusinessLogicError("Arquivo invalido ou vazio."));
 
         if (request.Content.Length > MaxBytes)
-            return Result.Fail(new BusinessLogicError("O arquivo deve ter no máximo 10 MB."));
+            return Result.Fail(new BusinessLogicError("O arquivo deve ter no maximo 10 MB."));
 
         if (!IsImage(request.Content))
-            return Result.Fail(new BusinessLogicError("O arquivo enviado deve ser uma imagem válida (jpg, png, gif, bmp, webp, tiff)."));
+            return Result.Fail(new BusinessLogicError("O arquivo enviado deve ser uma imagem valida (jpg, png, gif, bmp, webp, tiff)."));
 
         var key = $"{Guid.NewGuid()}{Path.GetExtension(request.FileName)}";
         var bucket = "products";

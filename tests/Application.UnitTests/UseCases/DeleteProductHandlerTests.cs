@@ -41,6 +41,6 @@ public class DeleteProductHandlerTests
         var result = await handler.Handle(cmd, CancellationToken.None);
 
         Assert.True(result.IsFailed);
-        Assert.Contains("não foi encontrado", result.Errors[0].Message);
+        Assert.Contains("nao foi encontrado", result.Errors[0].Message);
     }
 }

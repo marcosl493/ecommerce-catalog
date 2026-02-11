@@ -65,7 +65,7 @@ public class UploadProductImageHandlerTests
         var result = await handler.Handle(cmd, CancellationToken.None);
 
         Assert.True(result.IsFailed);
-        Assert.Contains("não foi encontrado", result.Errors[0].Message);
+        Assert.Contains("nao foi encontrado", result.Errors[0].Message);
     }
 
     [Fact]
@@ -91,7 +91,7 @@ public class UploadProductImageHandlerTests
         var result = await handler.Handle(cmd, CancellationToken.None);
 
         Assert.True(result.IsFailed);
-        Assert.Contains("Arquivo inválido ou vazio", result.Errors[0].Message);
+        Assert.Contains("Arquivo invalido ou vazio", result.Errors[0].Message);
     }
 
     [Fact]
@@ -118,7 +118,7 @@ public class UploadProductImageHandlerTests
         var result = await handler.Handle(cmd, CancellationToken.None);
 
         Assert.True(result.IsFailed);
-        Assert.Contains("no máximo 10 MB", result.Errors[0].Message);
+        Assert.Contains("no maximo 10 MB", result.Errors[0].Message);
     }
 
     [Fact]
@@ -149,6 +149,6 @@ public class UploadProductImageHandlerTests
         var result = await handler.Handle(cmd, CancellationToken.None);
 
         Assert.True(result.IsFailed);
-        Assert.Contains("deve ser uma imagem válida", result.Errors[0].Message);
+        Assert.Contains("deve ser uma imagem valida", result.Errors[0].Message);
     }
 }
