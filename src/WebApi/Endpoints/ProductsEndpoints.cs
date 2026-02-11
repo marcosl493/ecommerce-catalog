@@ -1,4 +1,5 @@
 ﻿using Application.UseCases.CreateProduct;
+using Application.UseCases.DeleteProduct;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,18 @@ public static class ProductsEndpoints
             return result.Serialize();
         }).Produces<CreateProductResponse>(StatusCodes.Status200OK)
           .ProducesValidationProblem(StatusCodes.Status400BadRequest);
+
+        endpoints.MapDelete("/{id:guid}", async (
+            [FromRoute] Guid id,
+            [FromServices] ISender sender,
+            CancellationToken cancellationToken
+        ) =>
+        {
+            var result = await sender.Send(new DeleteProductCommand(id), cancellationToken);
+            return result.Serialize();
+        }).Produces(StatusCodes.Status204NoContent)
+          .ProducesProblem(StatusCodes.Status404NotFound);
+
         return endpoints;
     }
 }

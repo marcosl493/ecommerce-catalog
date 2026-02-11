@@ -8,8 +8,7 @@ namespace Application.UseCases.CreateProduct;
 public sealed class CreateProductHandler
     (
         IProductRepository repository
-    )
-        : IRequestHandler<CreateProductCommand, Result<CreateProductResponse>>
+    ) : IRequestHandler<CreateProductCommand, Result<CreateProductResponse>>
 {
     private readonly IProductRepository _repository = repository;
 
