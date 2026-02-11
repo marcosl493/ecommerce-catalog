@@ -1,7 +1,7 @@
-using MediatR;
-using Domain.Entities;
 using Application.Common;
+using Domain.Entities;
 using FluentResults;
+using MediatR;
 
 namespace Application.UseCases.GetProduct;
 

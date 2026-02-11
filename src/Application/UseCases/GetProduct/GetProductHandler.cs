@@ -1,10 +1,9 @@
-using MediatR;
-using Application.Interfaces;
-using FluentResults;
 using Application.Common;
-using System.Linq;
+using Application.Interfaces;
 using Application.Reasons;
 using Domain.Entities;
+using FluentResults;
+using MediatR;
 
 namespace Application.UseCases.GetProduct;
 
@@ -38,9 +37,9 @@ public sealed class GetProductHandler
             .QueryAsync
             (
                 request.MinPrice,
-                request.MaxPrice, 
-                request.Active, 
-                request.Category, 
+                request.MaxPrice,
+                request.Active,
+                request.Category,
                 request.Page,
                 request.PageSize,
                 cancellationToken

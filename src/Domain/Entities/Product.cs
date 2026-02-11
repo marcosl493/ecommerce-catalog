@@ -65,6 +65,30 @@ public sealed class Product
         Active = false;
     }
 
+    // New: set product active
+    public void Activate()
+    {
+        Active = true;
+    }
+
+    // New: change name
+    public void ChangeName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Product name is required.");
+
+        Name = name;
+    }
+
+    // New: change description
+    public void ChangeDescription(string description)
+    {
+        if (string.IsNullOrWhiteSpace(description))
+            throw new ArgumentException("Product description is required.");
+
+        Description = description;
+    }
+
     private void Validate()
     {
         if (string.IsNullOrWhiteSpace(Name))

@@ -19,6 +19,9 @@ public static class ResultSerializer
         if (result.IsFailed)
             return HandlerError(result.Errors[0]);
 
+        if (result.ValueOrDefault is null)
+            return Results.NoContent();
+
         return Results.Ok(result.Value);
     }
 
