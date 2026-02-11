@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/Itens de Solução/">
-    <File Path=".github/workflows/ci.yml.txt" />
+    <File Path=".github/workflows/ci.yml" />
     <File Path=".gitignore" />
     <File Path="README.md" />
   </Folder>
