@@ -1,6 +1,6 @@
+using Domain.Entities;
 using FluentResults;
 using MediatR;
-using Domain.Entities;
 
 namespace Application.UseCases.UploadProductImage;
 

@@ -1,9 +1,9 @@
 using Application.Interfaces;
-using FluentResults;
-using MediatR;
 using Application.Reasons;
 using Domain.Entities;
 using Domain.ValueObjects;
+using FluentResults;
+using MediatR;
 
 namespace Application.UseCases.UploadProductImage;
 

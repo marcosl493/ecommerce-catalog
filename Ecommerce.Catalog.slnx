@@ -2,8 +2,13 @@
   <Folder Name="/Itens de Solução/">
     <File Path=".gitignore" />
   </Folder>
-  <Project Path="src/Application/Application.csproj" />
-  <Project Path="src/Domain/Domain.csproj" Id="804a6381-b9bf-417f-8b98-663d28b422c1" />
-  <Project Path="src/Infrastructure/Infrastructure.csproj" />
-  <Project Path="src/WebApi/WebApi.csproj" Id="5f2c9f32-fb0e-49de-a864-e6b4d18abf5b" />
+  <Folder Name="/src/">
+    <Project Path="src/Application/Application.csproj" />
+    <Project Path="src/Domain/Domain.csproj" Id="804a6381-b9bf-417f-8b98-663d28b422c1" />
+    <Project Path="src/Infrastructure/Infrastructure.csproj" />
+    <Project Path="src/WebApi/WebApi.csproj" Id="5f2c9f32-fb0e-49de-a864-e6b4d18abf5b" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Application.UnitTests/Application.UnitTests.csproj" Id="7eedb33d-ed01-4d43-8565-8510d15c8df0" />
+  </Folder>
 </Solution>
