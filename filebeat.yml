@@ -19,6 +19,8 @@ processors:
 output.elasticsearch:
   hosts: ["elasticsearch:9200"]
   index: "postgresql-logs-%{+yyyy.MM.dd}"
+  username: "${ELASTICSEARCH_USERNAME}"
+  password: "${ELASTICSEARCH_PASSWORD}"
 
 setup.template.enabled: true
 setup.template.name: "postgresql-logs"

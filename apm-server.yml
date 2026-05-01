@@ -1,0 +1,32 @@
+apm-server:
+  host: "0.0.0.0:8200"
+  enabled: true
+  rum:
+    enabled: false
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  username: ${ELASTICSEARCH_USERNAME}
+  password: ${ELASTICSEARCH_PASSWORD}
+  protocol: http
+  enabled: true
+  index: "apm-%{[agent.name]}-%{[observer.version]}-%{+yyyy.MM.dd}"
+
+logging:
+  level: debug
+  to_files: true
+  files:
+    path: /var/log/apm-server
+
+setup.kibana:
+  host: "kibana:5601"
+
+setup.template.enabled: false
+setup.ilm.enabled: false
+
+xpack.monitoring.enabled: false
+
+data_streams.enabled: false
+
+precondition.enabled: false
+precondition.apm_integration.enabled: false

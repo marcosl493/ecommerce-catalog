@@ -11,7 +11,8 @@ builder
     .AddOpenApi()
     .AddSerilog()
     .AddApplication()
-    .AddInfrastructure(builder.Configuration);
+    .AddInfrastructure(builder.Configuration)
+    .AddAllElasticApm();
 
 var app = builder.Build();
 
