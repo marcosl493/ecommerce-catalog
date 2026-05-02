@@ -53,7 +53,8 @@ services:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
       - SERVER_NAME=kibana
       - ELASTICSEARCH_REQUEST_TIMEOUT=30000
-      - ELASTICSEARCH_SERVICEACCOUNTTOKEN=AAEAAWVsYXN0aWMva2liYW5hL2tpYmFuYS10b2tlbjpZcU5Rd1B0bVR5Mkh6RnFGTGJTV0Z3
+      - ELASTICSEARCH_SERVICEACCOUNTTOKEN=${ELASTICSEARCH_SERVICEACCOUNTTOKEN}
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
     ports:
       - 5601:5601
     healthcheck:
@@ -137,7 +138,7 @@ services:
       - ELASTIC_APM_SERVER_URLS=http://apm-server:8200
       - ELASTIC_APM_SERVICE_NAME=webapi-ecommerce-catalog
       - ELASTIC_APM_ENVIRONMENT=development
-      - ELASTIC_APM_SECRET_TOKEN=
+      - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
       - ELASTIC_APM_TRANSACTION_SAMPLE_RATE=1.0
       - ConnectionStrings__CatalogDbContext=Server=postgres;Port=5432;Database=Ecommerce.Catalog;
     ports:
