@@ -1,6 +1,7 @@
 using Application;
 using Infrastructure;
 using Scalar.AspNetCore;
+using Serilog;
 using WebApi;
 using WebApi.Endpoints;
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +10,12 @@ builder.Logging.ClearProviders();
 builder
     .Services
     .AddOpenApi()
-    .AddSerilog()
+    .AddSerilog(builder.Configuration)
     .AddApplication()
     .AddInfrastructure(builder.Configuration)
     .AddAllElasticApm();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 

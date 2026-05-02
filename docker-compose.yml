@@ -128,7 +128,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
-      - Serilog__WriteTo__1__Args__nodeUris=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=${ELASTICSEARCH_USERNAME}
+      - ELASTICSEARCH_PASSWORD=${ELASTICSEARCH_PASSWORD}
+      - ELASTICSEARCH_INDEX_NAME=${ELASTICSEARCH_INDEX_NAME}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - ELASTIC_APM_SERVER_URLS=http://apm-server:8200
