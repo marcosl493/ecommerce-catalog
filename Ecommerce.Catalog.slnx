@@ -2,7 +2,11 @@
   <Folder Name="/Itens de Solução/">
     <File Path=".github/workflows/ci.yml" />
     <File Path=".gitignore" />
+    <File Path="apm-server.yml" />
+    <File Path="docker-compose.yml" />
+    <File Path="filebeat.yml" />
     <File Path="README.md" />
+    <File Path="scripts/script.sql" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Application/Application.csproj" />
