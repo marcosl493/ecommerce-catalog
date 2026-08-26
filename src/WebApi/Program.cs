@@ -12,8 +12,7 @@ builder
     .AddOpenApi()
     .AddSerilog(builder.Configuration)
     .AddApplication()
-    .AddInfrastructure(builder.Configuration)
-    .AddAllElasticApm();
+    .AddInfrastructure(builder.Configuration);
 
 builder.Host.UseSerilog();
 
