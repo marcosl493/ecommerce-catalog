@@ -1,10 +1,13 @@
 ﻿using Application.Interfaces;
+using Confluent.Kafka;
+using Infrastructure.Messaging;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using Infrastructure.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
@@ -35,6 +38,15 @@ public static class DependencyInjections
         services.AddSingleton<IMongoDbContext, MongoDbContext>();
         services.AddSingleton(sp => sp.GetRequiredService<IMongoDbContext>().GetMongoDatabase());
 
+        services.AddOptionsWithValidateOnStart<KafkaProducer.Options>()
+            .Bind(configuration.GetSection(KafkaProducer.Options.SectionName))
+            .ValidateDataAnnotations();
+
+        services.AddSingleton((sp) => new ProducerConfig
+        {
+            BootstrapServers = sp.GetRequiredService<IOptions<KafkaProducer.Options>>().Value.BootstrapServers
+        });
+        services.AddSingleton<IPublisherEvent, KafkaProducer>();
         services
             .AddLogging()
             .AddRepositories();
